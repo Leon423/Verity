@@ -256,3 +256,43 @@ function DetermineCorrectShapes(insideShape, usePureShapes, stateShape, usedShap
         return validShapes[0];
     }
 }
+function ToggleStyle(checked) {
+    var _a, _b;
+    if (checked) {
+        //add the fun styling
+        var buttonContainers = document.getElementsByClassName("button-container");
+        for (var i = 0; i < buttonContainers.length; i++) {
+            for (var j = 0; j < buttonContainers[i].children.length; j++) {
+                if (i == 0) {
+                    buttonContainers[i].children[j].classList.add("arc-button");
+                }
+                else if (i == 1) {
+                    buttonContainers[i].children[j].classList.add("solar-button");
+                }
+                else {
+                    buttonContainers[i].children[j].classList.add("void-button");
+                }
+            }
+        }
+        //add prismatic back
+        (_a = document.getElementById("finalShapeContainer")) === null || _a === void 0 ? void 0 : _a.classList.add("prismatic-color");
+    }
+    else {
+        var buttonContainers = document.getElementsByClassName("button-container");
+        for (var i = 0; i < buttonContainers.length; i++) {
+            for (var j = 0; j < buttonContainers[i].children.length; j++) {
+                if (i == 0) {
+                    buttonContainers[i].children[j].classList.remove("arc-button");
+                }
+                else if (i == 1) {
+                    buttonContainers[i].children[j].classList.remove("solar-button");
+                }
+                else {
+                    buttonContainers[i].children[j].classList.remove("void-button");
+                }
+            }
+        }
+        //add prismatic back
+        (_b = document.getElementById("finalShapeContainer")) === null || _b === void 0 ? void 0 : _b.classList.remove("prismatic-color");
+    }
+}
