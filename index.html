@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="index.js"></script>
+    <style>
+        body {
+        font-family: 'Arial', sans-serif;
+        background-color: #1e1e1e; /* Dark blue or gunmetal gray */
+        color: #ffffff; /* White text */
+        }
+
+        h1, h2, h3 {
+        font-family: 'Roboto', sans-serif;
+        font-weight: bold;
+        color: #ffa500; /* Orange */
+        }
+
+        p {
+        font-size: 16px;
+        line-height: 1.6;
+        }
+        .button {
+            display: inline-block;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            background-color: #ffa500; /* Orange */
+            border-radius: 5px;
+        }
+        .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            background-color: #ff7f00; /* Lighter shade of orange */
+
+        }    
+        .arc-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #1976d2; /* Dark blue, typical for Arc abilities */
+            color: #ffffff;
+            border: 2px solid #1976d2;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .arc-button:hover {
+            background-color: #64b5f6; /* Light blue */
+            border-color: #64b5f6;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .solar-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ff9800; /* Orange, typical for Solar abilities */
+            color: #ffffff;
+            border: 2px solid #ff9800;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+        }
+
+        .solar-button:hover {
+            background-color: #ffb74d; /* Lighter shade of orange */
+            border-color: #ffb74d;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .void-button {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #673ab7; /* Dark purple, typical for Void abilities */
+            color: #ffffff;
+            border: 2px solid #673ab7;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            margin: 10px;
+            width: 100px;
+            height: 100px;
+        }   
+
+        .void-button:hover {
+            background-color: #9575cd; /* Light purple */
+            border-color: #9575cd;
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .prismatic-color {
+            /* background: linear-gradient(45deg, #ff0000, #ff7700, #ffdd00, #00ff00, #0077ff, #4400ff, #aa00ff); */
+            background: linear-gradient(45deg, #ff4e50, #ff9800, #f9d423, #4fd9b4, #1976d2, #673ab7);
+            background-size: 600% 600%;
+            animation: prismaticAnimation 15s ease infinite;
+        }
+
+        @keyframes prismaticAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .left, .middle, .right {
+            width: 30%;
+            background-color: #1a1a1a;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .cone-button {
+            background-image: url('images/cone.png');
+            background-size: cover;
+        }
+        .cylinder-button {
+            background-image: url('images/cylinder.png');
+            background-size: cover;
+        }
+        .prism-button {
+            background-image: url('images/prism.png');
+            background-size: cover;
+        }
+        .sphere-button {
+            background-image: url('images/sphere.png');
+            background-size: cover;
+        }
+        .pyramid-button {
+            background-image: url('images/pyramid.png');
+            background-size: cover;
+        }
+        .cube-button {
+            background-image: url('images/cube.png');
+            background-size: cover;
+        }
+        input[type="text"] {
+            width: 80%;
+            padding: 5px;
+            margin-top: 5px;
+            border: 1px solid #444;
+            border-radius: 4px;
+            background-color: #333;
+            color: #fff;
+        }
+        input[type="checkbox"] {
+            margin-left: 10px;
+        }
+        #submit {
+            color: #e0e0e0;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s, box-shadow 0.2s;
+        }
+        #submit:hover {
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        .final-shapes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .picture {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            background-color: white;
+        }
+        .hideThis {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h3>Inside</h3>
+    <input id="insideShapes" type="text" placeholder="cst">
+    <br>
+    <h3>Outside</h3>
+    <div class="container">
+        <div class="left">
+            <h4>Left <input id="leftShapes" type="text" maxlength="2"></h4>
+            <div class="button-container">
+                <button class="arc-button cone-button" onclick="SetOutside('leftShapes','CT')"></button>
+                <button class="arc-button cylinder-button" onclick="SetOutside('leftShapes','CS')"></button>
+                <button class="arc-button prism-button" onclick="SetOutside('leftShapes','ST')"></button>            
+                <button class="arc-button sphere-button" onclick="SetOutside('leftShapes','CC')"></button>
+                <button class="arc-button pyramid-button" onclick="SetOutside('leftShapes','TT')"></button>
+                <button class="arc-button cube-button" onclick="SetOutside('leftShapes','SS')"></button>
+            </div>
+        </div>
+        <div class="middle">
+            <h4>Mid <input id="midShapes" type="text" maxlength="2"> </h4>
+            <div class="button-container">
+                <button class="solar-button cone-button" onclick="SetOutside('midShapes','CT')"></button>
+                <button class="solar-button cylinder-button" onclick="SetOutside('midShapes','CS')"></button>
+                <button class="solar-button prism-button" onclick="SetOutside('midShapes','ST')"></button>    
+                <button class="solar-button sphere-button" onclick="SetOutside('midShapes','CC')"></button>
+                <button class="solar-button pyramid-button" onclick="SetOutside('midShapes','TT')"></button>
+                <button class="solar-button cube-button" onclick="SetOutside('midShapes','SS')"></button>
+            </div>
+        </div>
+        <div class="right">
+            <h4>Right <input id="rightShapes" type="text" maxlength="2"></h4>
+            <div class="button-container">
+                <button class="void-button cone-button" onclick="SetOutside('rightShapes','CT')"></button>
+                <button class="void-button cylinder-button" onclick="SetOutside('rightShapes','CS')"></button>
+                <button class="void-button prism-button" onclick="SetOutside('rightShapes','ST')"></button>            
+                <button class="void-button sphere-button" onclick="SetOutside('rightShapes','CC')"></button>
+                <button class="void-button pyramid-button" onclick="SetOutside('rightShapes','TT')"></button>
+                <button class="void-button cube-button" onclick="SetOutside('rightShapes','SS')"></button>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div style="text-align: center;">
+        <h3>Use Pure Shapes? <input type="checkbox" id="pureShapes" checked></h3>
+        <button class="button" id="submit" onclick="SolveEncounter()">Solve</button>
+    </div>
+    
+    <h2 style="text-align: center;">Steps</h2>
+    <div style="text-align: center;"></div>
+        <ol id="steps" style="text-align: center; list-style-position: inside;">
+        </ol>
+    </div>
+    <div style="display: block; text-align: center;">
+        <h3>Final Shapes:</h3>
+        <div class="final-shapes">
+            <div id="finalShapeContainer" class="image-container prismatic-color">
+               
+            </div>
+
+            <img id="CT" src="images/cone.png" alt="Cone" class="picture hideThis">
+            <img id="CS" src="images/cylinder.png" alt="Cylinder" class="picture hideThis">
+            <img id="ST" src="images/prism.png" alt="Prism" class="picture hideThis">
+            <img id="CC" src="images/sphere.png" alt="Sphere" class="picture hideThis">
+            <img id="TT" src="images/pyramid.png" alt="Pyramid" class="picture hideThis">
+            <img id="SS" src="images/cube.png" alt="Cube" class="picture hideThis">
+</body>
+</html>
