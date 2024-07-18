@@ -1,6 +1,4 @@
 "use strict";
-let message = 'Hello, World!';
-alert(message);
 function SetOutside(area, shapes) {
     var input = document.getElementById(area);
     if (input != null) {
