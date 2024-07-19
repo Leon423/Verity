@@ -15,6 +15,13 @@ function SolveEncounter() {
         mid: (_c = document.getElementById("midShapes")) === null || _c === void 0 ? void 0 : _c.value.toUpperCase(),
         right: (_d = document.getElementById("rightShapes")) === null || _d === void 0 ? void 0 : _d.value.toUpperCase()
     };
+    //determine if its a valid start
+    var fullString = outside.left + outside.mid + outside.right;
+    if (fullString.length != 6 || fullString.split("C").length - 1 != 2 ||
+        fullString.split("S").length - 1 != 2 || fullString.split("T").length - 1 != 2) {
+        alert("Invalid Outside shapes");
+        return;
+    }
     //determine dunks to get to valid shapes
     var currentState = outside;
     var usePureShapes = (_e = document.getElementById("pureShapes")) === null || _e === void 0 ? void 0 : _e.checked;
