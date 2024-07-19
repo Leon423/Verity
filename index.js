@@ -5,6 +5,18 @@ function SetOutside(area, shapes) {
         input.value = shapes;
     }
 }
+function SetInside(shape) {
+    var input = document.getElementById("insideShapes");
+    if (input != null) {
+        var startVal = input.value;
+        if (startVal.length == 3) {
+            startVal = startVal.slice(1);
+        }
+        //add new character
+        startVal = startVal + shape;
+        input.value = startVal;
+    }
+}
 function SolveEncounter() {
     var _a, _b, _c, _d, _e, _f, _g, _h;
     //get inside shapes values

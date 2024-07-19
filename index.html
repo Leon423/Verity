@@ -58,7 +58,7 @@
         .arc-button {
             display: inline-block;
             padding: 12px 24px;
-            background-color: #1976d2; /* Dark blue, typical for Arc abilities */
+            background-color: #3a90c9; /* Dark blue, typical for Arc abilities */
             color: #ffffff;
             border: 2px solid #1976d2;
             border-radius: 5px;
@@ -228,12 +228,58 @@
         .hideThis {
             display: none;
         }
+
+        .stasis-button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #ffffff;
+            text-align: center;
+            text-decoration: none;
+            background-color: #1976d2; /* Frosty blue background */
+            border: 2px solid #265c7f; /* Darker blue border */
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+
+            /* Frosty texture overlay */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stasis-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0) 50%, rgba(255,255,255,0.4) 70%, rgba(255,255,255,0.6) 80%, rgba(255,255,255,0.8) 90%);
+            transform: rotate(-45deg);
+            opacity: 0.6; /* Adjust opacity as desired */
+        }
+
+        .stasis-button:hover {
+            background-color: #2975a5; /* Darker shade on hover */
+        }
+
+        .stasis-button:focus {
+            outline: none;
+        }
+
+
+
     </style>
 </head>
 <body>
     <h3>Use Styles <input id="styling" type="checkbox" checked onchange="ToggleStyle(checked)"></h3>
     <h3>Inside</h3>
     <input id="insideShapes" type="text" placeholder="cst" style="margin: 0 auto; display: block;">
+    <div class="button-container" style="margin-left: 20%; margin-right: 20%;">
+        <button class="button stasis-button sphere-button" onclick="SetInside('C')"></button>
+        <button class="button stasis-button pyramid-button" onclick="SetInside('T')"></button>
+        <button class="button stasis-button cube-button" onclick="SetInside('S')"></button>
+    </div>
     <br>
     <h3>Outside</h3>
     <div class="container">
