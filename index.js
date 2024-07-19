@@ -281,9 +281,12 @@ function ToggleStyle(checked) {
         for (var i = 0; i < buttonContainers.length; i++) {
             for (var j = 0; j < buttonContainers[i].children.length; j++) {
                 if (i == 0) {
-                    buttonContainers[i].children[j].classList.add("arc-button");
+                    buttonContainers[i].children[j].classList.add("stasis-button");
                 }
                 else if (i == 1) {
+                    buttonContainers[i].children[j].classList.add("arc-button");
+                }
+                else if (i == 2) {
                     buttonContainers[i].children[j].classList.add("solar-button");
                 }
                 else {
@@ -299,9 +302,12 @@ function ToggleStyle(checked) {
         for (var i = 0; i < buttonContainers.length; i++) {
             for (var j = 0; j < buttonContainers[i].children.length; j++) {
                 if (i == 0) {
-                    buttonContainers[i].children[j].classList.remove("arc-button");
+                    buttonContainers[i].children[j].classList.remove("stasis-button");
                 }
                 else if (i == 1) {
+                    buttonContainers[i].children[j].classList.remove("arc-button");
+                }
+                else if (i == 2) {
                     buttonContainers[i].children[j].classList.remove("solar-button");
                 }
                 else {
