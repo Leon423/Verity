@@ -36,12 +36,13 @@ function SolveEncounter() {
     }
     //determine dunks to get to valid shapes
     var currentState = outside;
+    //get first element of inside
     var usePureShapes = (_e = document.getElementById("pureShapes")) === null || _e === void 0 ? void 0 : _e.checked;
     var usedShapes = [];
     var validSolutions = {
-        left: DetermineCorrectShapes(inside[0], usePureShapes, currentState.left, usedShapes),
-        mid: DetermineCorrectShapes(inside[1], usePureShapes, currentState.mid, usedShapes),
-        right: DetermineCorrectShapes(inside[2], usePureShapes, currentState.right, usedShapes)
+        left: DetermineCorrectShapes(inside, 0, usePureShapes, currentState.left, usedShapes, []),
+        mid: DetermineCorrectShapes(inside, 1, usePureShapes, currentState.mid, usedShapes, [inside[0]]),
+        right: DetermineCorrectShapes(inside, 2, usePureShapes, currentState.right, usedShapes, [inside[0], inside[1]])
     };
     console.log(validSolutions);
     var dunks = [];
@@ -231,9 +232,9 @@ function DetermineMissingLetterInString(str, goal) {
         return goal[0];
     }
 }
-function DetermineCorrectShapes(insideShape, usePureShapes, stateShape, usedShapes) {
+function DetermineCorrectShapes(insideShape, index, usePureShapes, stateShape, usedShapes, processedShapes) {
     var validShapes = [];
-    switch (insideShape) {
+    switch (insideShape[index]) {
         case "C":
             validShapes = ["ST", "SS", "TT"];
             break;
@@ -247,6 +248,17 @@ function DetermineCorrectShapes(insideShape, usePureShapes, stateShape, usedShap
     if (usePureShapes) {
         //remove first element of array, keeping the other two
         validShapes = validShapes.slice(1);
+        //check if both of our options are valid
+        if (usedShapes.indexOf(validShapes[0]) == -1 && usedShapes.indexOf(validShapes[1]) == -1 && usedShapes.length > 0) {
+            //both shapes can be used, so lets make sure that the last shape doesn't need it
+            //get last shape
+            var lastInside = insideShape[2];
+            //if one of my solutions has the last shapes letter, i need to use that one.
+            if (lastInside == validShapes[0][0] || lastInside == validShapes[1][0]) {
+                //use his double shape
+                return lastInside + lastInside;
+            }
+        }
         //determine which shape is easiest to make
         if (validShapes[0].includes(stateShape[0]) || validShapes[0].includes(stateShape[1])) {
             //if this shape is already in there, then we use the other shape.
